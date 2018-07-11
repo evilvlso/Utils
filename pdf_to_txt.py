@@ -26,7 +26,7 @@ base_path = local_path
 
 def down_pdf(response, path):
     print(base_path)
-    # response = requests.get(url)
+    response = requests.get(url)
     with open(base_path + '{}.pdf'.format(path), 'wb+') as f:
         f.write(response)
 
