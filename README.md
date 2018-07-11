@@ -18,5 +18,5 @@
   
 ## view.exe
    获取 “不死鸟” 大佬的每日文章的美图，，是真美，( *︾▽︾)( *︾▽︾)
-## view.py
-  大佬网站有好几百的图片，顺便使用 gevent,concurrent库练练手，嗯 很好用
+## pretty_pic.py
+  大佬网站有好几百的图片，顺便使用 gevent,concurrent库练练手，嗯 很好用,很漂亮！
