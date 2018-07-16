@@ -10,8 +10,6 @@
 ## custom_logging.py
   python中logging模块中存在的Handler不满足需求，自定义一个Handler用以将日志存储进数据库。
   
-## get_cookies.py
-  selenium 模拟浏览器登录网站获取到cookies,然后添加进requests中。
 
 ## gevent_concurrent_multiprocess.py
   学习异步，多进程。内含gevent异步库，内建库concurrent库，内建库multiprocess库的使用方法和基本性能测试。似乎gevent库强一些...
@@ -22,5 +20,5 @@
 ## pretty_pic.py
   大佬网站有好几百的图片，顺便使用 gevent,concurrent库练练手，嗯 很好用,很漂亮！
 
-## scrapy_get_cookies.py
-   从scrapy的response中获取cookies的两种方法
+## from_anywhere_get_cookies.py
+   从scrapy的response中获取cookies的两种方法，第一种方法也可以从requests.cookies中提取。第三种方法登录后从浏览器中提取
