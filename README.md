@@ -2,7 +2,7 @@
 常用的小脚本
 
 ## bing.exe
->>下载[必应](www.bing.com) 当日背景图片，存储到 D://BINGPIC 文件夹下 没有该文件夹，自动创建。配合windows 计划任务，你懂的... 个人觉得bing的图片都>>是大开大合型的，大美,像是[这种](https://cn.bing.com/az/hprichbg/rb/LetchworthSP_ZH-CN14963443838_1920x1080.jpg).
+>>下载[必应](www.bing.com) 当日背景图片，存储到 D://BINGPIC 文件夹下 没有该文件夹，自动创建。配合windows 计划任务，你懂的... 个人觉得bing的图片都是大开大合型的，大美 , 像是[这种](https://cn.bing.com/az/hprichbg/rb/LetchworthSP_ZH-CN14963443838_1920x1080.jpg).
 ***
 ## pdf_to_txt.py
 >>使用的库是 pdfminer3k .该文件可以直接拿来导入main(path,url)使用， path:下载的文件的文件名，url：pdf网址。  文件会下载到执行该文件的同级目录pdf>>下，如果没有pdf目录不会自行创建，(*^_^*)。只识别文字，图片会跳过。
