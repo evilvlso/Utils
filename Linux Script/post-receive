@@ -1,0 +1,2 @@
+#!/bin/bash
+GIT_WORK_TREE=/home/ggt git checkout -q -f
