@@ -47,6 +47,21 @@ if __name__ == '__main__':
     print(len(l))
     print('COST: {}'.format(time.time() - start))
 
+    #concurrent.future.ProcessPoolExecutor with chunksize测试
+    print('ProcessPoolExecutor with chunksize:\n')
+    start = time.time()
+
+    l = []
+    with ProcessPoolExecutor(max_workers=3) as executor:
+        # 保持和multiprocessing.pool的默认chunksize一样
+        chunksize, extra = divmod(len(NUMBERS), executor._max_workers * 4)
+
+        for num, result in zip(NUMBERS, executor.map(f, NUMBERS, chunksize=chunksize)):
+            l.append(result)
+
+    print(len(l))
+    print('COST: {}'.format(time.time() - start))
+
     #gevent.spawn测试
     print(' with gevent:\n')
     start = time.time()
@@ -63,17 +78,4 @@ if __name__ == '__main__':
     print(len(th))
     print('COST: {}'.format(time.time() - start))
 
-    #concurrent.future.ProcessPoolExecutor with chunksize测试
-    print('ProcessPoolExecutor with chunksize:\n')
-    start = time.time()
-
-    l = []
-    with ProcessPoolExecutor(max_workers=3) as executor:
-        # 保持和multiprocessing.pool的默认chunksize一样
-        chunksize, extra = divmod(len(NUMBERS), executor._max_workers * 4)
-
-        for num, result in zip(NUMBERS, executor.map(f, NUMBERS, chunksize=chunksize)):
-            l.append(result)
-
-    print(len(l))
-    print('COST: {}'.format(time.time() - start))
+    

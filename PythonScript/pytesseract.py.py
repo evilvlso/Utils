@@ -1,21 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import logging
-import logging.config
 import pytesseract
 from PIL import Image
 
 
 class DeCaptcha(object):
-    """验证码破解"""
-
-    def __init__(self):
-        """构造函数"""
-        super(DeCaptcha, self).__init__()
-
-        self.logger = logging.getLogger(self.__class__.__name__)
-        self.logger.debug("Init DeCaptcha instance")
-        pass
+  
 
     def crack(self, imgCaptcha):
         """通过OCR识别验证码
@@ -25,9 +15,9 @@ class DeCaptcha(object):
             识别出来的字符串
         """
 
-        # code = pytesseract.image_to_string(imgCaptcha, config="-psm 7")
-        code = pytesseract.image_to_string(self.binarize(imgCaptcha), config="-psm 7")
-        self.logger.debug("OCR识别结果: %s" % code)
+        code = pytesseract.image_to_string(imgCaptcha, config="-psm 7")
+        # code = pytesseract.image_to_string(self.binarize(imgCaptcha), config="-psm 7")
+        print("OCR识别结果: %s" % code)
         return code
 
     def binarize(self, imgCaptcha):
@@ -55,11 +45,12 @@ class DeCaptcha(object):
 
 def main():
     # logging.config.fileConfig("logging.config")
-    captchaFile = "woc.png"
+    captchaFile = "2.png"
     image = Image.open(captchaFile)
-
+    img = image.resize((300,300),Image.ANTIALIAS)
+    img.show()
     deCaptcha = DeCaptcha()
-    deCaptcha.crack(image)
+    deCaptcha.crack(img)
     pass
 
 

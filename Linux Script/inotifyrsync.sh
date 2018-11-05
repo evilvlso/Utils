@@ -28,3 +28,16 @@ inotify_fun(){
 
 #inotify log
 inotify_fun >> ${log_file} 2>&1 &
+
+
+
+
+
+-----------------------------
+简化版：
+#!/bin/sh
+/usr/local/bin/inotifywait -mrq -e modify,attrib,move,create,delete /test | while read file
+do
+    rsync -a --delete /test/ 192.168.1.20:/testbak/
+    echo "$file在`date +'%F %T %A'`同步成功" >> /var/log/rsync.log
+done
