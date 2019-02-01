@@ -1,0 +1,59 @@
+## 设置matplotlib字体
+```
+import matplotlib
+matplotlib.rcParams["font.family"]='STSong'
+matplotlib.rcParams["font.size"]=14
+```
+
+## 柱状图
+```
+test_data.plot.bar(x="PassengerId",y="Age")
+plt.title(label="bar",fontsize=20,fontweight="bold")
+plt.tight_layout()
+```
+!["效果"](https://i.loli.net/2018/12/13/5c122083146fc.png)
+***
+## 分组柱状图
+```
+test_data.plot.bar(y=["Age","Fare"])
+ax= plt.gca()
+ax.set_xticklabels(xlabel,rotation=60,ha="right")
+plt.tight_layout()
+# post_data.plot.scatter(y="Age",x="PassengerId")
+plt.show()
+
+```
+!["效果"](https://i.loli.net/2018/12/13/5c122592af590.png)
+***
+## 叠加柱状图
+```
+test_data.plot.bar(x="x column",y=["Age","Fare"],stacked=True)
+
+```
+!["效果"](https://i.loli.net/2018/12/13/5c1227f1c8554.png)
+***
+## 饼图
+```
+test_data.Age.plot.pie(fontsize=16,startangle=-270)
+```
+!["效果"](https://i.loli.net/2018/12/13/5c1229be99d8a.png)
+***
+## 折线图(叠加区域图)
+
+```
+test_data.plot(y=["Age","Pclass"])
+test_data.plot.area(y=["Age","Pclass"])
+```
+***
+## 散点图
+```
+post_data.plot.scatter(y="Age",x="PassengerId")
+```
+!["效果"](https://i.loli.net/2018/12/13/5c122ec05fc90.png)
+***
+### 直方图
+```
+post_data.Age.plot.hist(bins=30)
+```
+!["效果"](https://i.loli.net/2018/12/13/5c122fea1c02e.png)
+***
