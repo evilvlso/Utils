@@ -17,6 +17,17 @@ server {
         alias  /home/www/flask_project/app/static/;
     }
 }
+upstream tomcats {
+    #ip_hash;
+    #fair; 相应是时间短的被分配
+    server 192.168.0.100:8080 weight=2 max_fails=3 fail_timeout=15;  
+
+    server 192.168.0.101:8080 down;   #表示不可用
+
+    server 192.168.0.102:8080 backup;  #都坏了 启动backup
+}
+
+
 
 首先精确匹配 =
 其次前缀匹配 ^~
