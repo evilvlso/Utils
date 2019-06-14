@@ -1,0 +1,43 @@
+
+
+import asyncio
+from  pyppeteer import launch
+
+async def main():
+    browser = await pyppeteer.launch({
+            'devtools':
+            False,
+            'args': ['--no-sandbox', '--user-agent="' + UserAgent + '"']
+        })
+    
+async def request_check(req):
+    '''请求过滤'''
+    if req.resourceType in ['image', 'media', 'eventsource', 'websocket']:
+        await req.abort()
+    else:
+        await req.continue_()
+
+await page.setRequestInterception(True)
+page.on('request', request_check)
+
+#处理网络问题
+async def goto(page, url):
+    while True:
+        try:
+            await page.goto(url, {
+                'timeout': 0,
+                'waitUntil': 'networkidle0'
+            })
+            break
+        except (pyppeteer.errors.NetworkError,
+                pyppeteer.errors.PageError) as ex:
+            # 无网络 'net::ERR_INTERNET_DISCONNECTED','net::ERR_TUNNEL_CONNECTION_FAILED'
+            if 'net::' in str(ex):
+                await asyncio.sleep(10)
+            else:
+                raise
+
+#注入js
+await page.addScriptTag(path=JS_AJAX_HOOK_LIB)
+
+
