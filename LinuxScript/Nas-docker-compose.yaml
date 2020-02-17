@@ -29,3 +29,10 @@ services:
       - 8096:8096
     restart: unless-stopped
   # nextcloud
+  # vlmcsd
+  vlmcsd:
+    image: mogeko/vlmcsd
+    container_name: vlmcsd
+    ports:
+      - 1688:1688
+    restart: always
