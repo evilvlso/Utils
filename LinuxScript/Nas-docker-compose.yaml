@@ -1,0 +1,31 @@
+version: "2"
+services:
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - USER=root #optional
+      - PASS=weidong #optional
+    volumes:
+      - /transmission/config:/config
+      - /jellyfin/movies:/downloads
+      - /transmission/config:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    volumes:
+      - /jellyfin/config:/config
+      - /jellyfin/cache:/cache
+      - /jellyfin/movies/complete:/media
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+  # nextcloud
