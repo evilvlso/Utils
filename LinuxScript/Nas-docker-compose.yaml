@@ -36,3 +36,16 @@ services:
     ports:
       - 1688:1688
     restart: always
+  # baidupcs
+  panbaidu:
+    image: auska/docker-baidupcs   # https://github.com/liuzhuoling2011/baidupcs-web  https://github.com/iikira/BaiduPCS-Go
+    container_name: panbaidu
+    ports:
+      - 1999:1999
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - PORT=1999
+    volumes:
+      - /jellyfin/movies/complete:/root/Downloads
