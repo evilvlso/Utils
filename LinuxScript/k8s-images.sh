@@ -1,6 +1,7 @@
 #!/bin/bash
 # download k8s 1.15.2 images
 # get image-list by 'kubeadm config images list --kubernetes-version=v1.15.2'
+# or kubeadm init --apiserver-advertise-address=192.168.1.224 --image-repository registry.aliyuncs.com/google_containers --kubernetes-version v1.15.0  --pod-network-cidr=10.244.0.0/16
 
 images=(
 kube-apiserver:v1.18.1
